@@ -1,0 +1,151 @@
+CTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>I love Jquery</title>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+		<link rel="stylesheet" href="lejeuxjquery.css">
+	</head>
+		<h1>Mon Super Jeux Jquery</h1>
+	</head>
+
+	<body id="index">
+
+		<main id="zoneAttaque">
+
+
+			<div id="monjeux">
+				<div id="objectif">
+					<img src="img/fantome.png" alt="fantome">
+				</div>
+			</div>
+
+
+		</main>
+<script type="text/javascript" src="lejeuxjquery.js"></script>
+	</body>
+</html>
+
+
+
+body{
+background-color: #000;
+background-size: 100%;
+
+}
+h1{
+
+ text-align: center;
+ color: #fff;
+}
+#monjeux {
+	position:relative;
+	height: 250px;
+}
+#objectif {
+	position:absolute;
+	top:10px;
+	left:250px;
+	width:78px;
+	height:100px;
+}
+
+#objectif {
+	width: 150px;
+	height: auto;
+
+}
+
+
+#monjeux span {
+	background: rgba(255,255,255,0.4);
+	font-size: 20px;
+	padding: 20px;
+	display: inline-block;
+	position: absolute;
+	top: 80px;
+	cursor: pointer;
+}
+
+
+<script>
+
+jQuery(document).ready(function() {
+
+		var boum = new Audio('bruitage/explosion.mp3');
+
+		var score = 0;
+		$('#monjeux').css('cursor', 'url(img/viseur.png) 25 25, pointer');
+		$('#monjeux').append('<span></span>')
+
+		function tourner() {
+
+			$('#objectif').css({left: 30, top: 90}) 
+
+				.animate({left: 270, top:-20}, 1000) 
+				.animate({left: 540, top:55}, 1000) 
+				.animate({left: 775, top:0}, 1000)
+				.animate({left: 775, top:250}, 1000)
+				.animate({left: 30, top:250}, 500); 
+		}
+
+		tourner();
+		var chrono = setInterval(tourner , 500);
+
+		$('#objectif').click(function() {
+			
+			
+
+			boum.play(); 
+
+			$('#monjeux span').html(score);
+			$('#objectif img').attr('src', 'img/explosion.gif');
+
+			$('#objectif img').animate ({width : '400%'}, 100);
+
+				$('#objectif img').fadeOut(500, function() {
+					 if (score >=100) {
+						$('#objectif img').attr('src', 'img/fantome.png');
+					} else if (score >=50) {
+						$('#objectif img').attr('src', 'img/mess.jpg');
+					} else {
+						$('#objectif img').attr('src', 'img/fantome.png');
+					}
+					$('#objectif img').animate ({width : '100%'}, 50);
+
+					$('#objectif img').fadeIn();
+				});
+			score = score + 10; 
+		});		
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+

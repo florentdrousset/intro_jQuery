@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+}
+
+img {
+    position: absolute;
+}
+
+#countdown {
+    position: absolute;
+    top: 400px;
+    right: 30px;
+    background-color: purple;
+    height: 200px;
+    width: 200px;
+}
